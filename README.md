@@ -5,14 +5,13 @@
 This course offers an introductory study of UAS. Our primary focus is on the challenges that are inherent in guiding and controlling limited-payload small and miniature aircraft systems (with quad-rotor mini-rotorcraft as the main system of interest).
 
 ### Repo Organization
-* ClassNotes
-    * Scans of lecture notes for the course
-    * Contains first day presentation, which acts as course syllabus
+* lectures
+    * Lecture slides for the course
 * hwX
     * Directories for each homework
     * Contains code and writeup
     * Contains scaned corrected versions of student submissions
-    * See below for details
+    * See below for details on each assignment
 * project
     * Literature review
     * Term project proposal
@@ -20,5 +19,6 @@ This course offers an introductory study of UAS. Our primary focus is on the cha
     * 'references' directory is not tracked by GIT
 
 ### Student Work
-1. Acoustic Signal Processing and Sound Pressure Level/Octave Band Analysis
-  * Analyzes recorded sonic boom pressure signal
+1. Essay on the Current State of UAS
+  * A discussion on the potentially positive and negative effects UAS will have on the future of human society
+  * Suggestions on ways to regulate UAS usage so as to reap the benefits will mitigating the risks

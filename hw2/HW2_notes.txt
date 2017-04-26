@@ -1,1 +1,30 @@
 Need to set matlab environment to current folder for code to run correctly
+
+Number of vertices in each face must be the same
+    didnt notice in instructions
+    solve this by repeating last point until size is filled
+
+Script vertices for each rotor circle
+    center on arm locations
+
+Simulation clock is located in simulink model of drawVehicle,
+    not main simulation diagram
+
+Rotor Color coding:
+front=north=green
+back=-north=red
+right=east=blue
+left=-east=cyan
+
+Switching order of rotation and translation has no effect on final
+position/orientation since these inputs are global.
+    Switching order does change orientation of quad while translating:
+        Level or pitched while translating
+
+Screen recording on Mac:
+1. Launch Quicktime
+2. File --> New Screen Recording
+3. Click record button (doesn't start recording yet)
+4. Click and drag screen to create recording window, or click to record whole screen
+5. Click to start recording
+6. Click stop button to stop

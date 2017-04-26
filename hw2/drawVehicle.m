@@ -16,6 +16,7 @@ function drawVehicle(uu,V,F,patchcolors)
     r        = uu(12);       % yaw rate
     t        = uu(13);       % time
 
+
     % define persistent variables
     persistent vehicle_handle;
     persistent Vertices
@@ -34,7 +35,7 @@ function drawVehicle(uu,V,F,patchcolors)
         ylabel('North')
         zlabel('-Down')
         view(32,47)  % set the vieew angle for figure
-        axis([-10,10,-10,10,-10,10]);
+        axis([-10,10,-10,10,-10,10]); %plot axis bounds
         hold on
 
     % at every other time step, redraw base and rod

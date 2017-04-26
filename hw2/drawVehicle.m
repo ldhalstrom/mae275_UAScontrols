@@ -120,8 +120,8 @@ end
 function [V,F,facecolors] = defineVehicleBody
 
 % Define the vertices (physical location of vertices
-La = 1;         % length of rotor support arm
-Rr = 0.25;          % rotor radius
+La = 2;         % length of rotor support arm
+Rr = 0.5;          % rotor radius
 
 
 
@@ -218,16 +218,17 @@ disp(F)
   myblue = [0, 0, 1];
   myyellow = [1, 1, 0];
   mycyan = [0, 1, 1];
+  myblack = [0, 0, 0];
 
   facecolors = [...
-    mygreen;...    % front arm
-    myred;...      % rear arm
-    myblue;...     % right arm
-    mycyan;...     % left arm
-    myyellow;...     %
-    myyellow;...     %
-    myyellow;...     %
-    myyellow;...     %
+    myblack;...    % front arm
+    myblack;...      % rear arm
+    myblack;...     % right arm
+    myblack;...     % left arm
+    mygreen;...     % Front rotor
+    myred;...     % Rear rotor
+    myblue;...     % Right rotor
+    mycyan;...     % Left rotor
     ];
 end
 

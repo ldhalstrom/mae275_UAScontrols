@@ -152,57 +152,57 @@ V = horzcat(V,RotCent);
 
 
 % %Make vertices for 4 rotors
-nRotVerts = 10 %Number of verticies in rotor circle
-nRotVerts = 4 %Number of verticies in rotor circle
-% RotVerts = zeros(4,nRotVerts)
+% nRotVerts = 10 %Number of verticies in rotor circle
+% nRotVerts = 4 %Number of verticies in rotor circle
+% for i=1:4
+%     % for j=1:nRotVerts
+
+
+%         xc = RotCent(1,i);  %x-center of rotor
+%         yc = RotCent(2,i);  %y-center of rotor
+
+%         RotVerts = [...
+%             xc+Rr, yc, 0;...  %front
+%             xc,    yc+Rr, 0;...  %right
+%             xc-Rr, yc, 0;...  %back
+%             xc,    yc-Rr, 0;...  %left
+%             ]';
+%     % end
+
+%     %append to vertices
+%     V = horzcat(V,RotVerts)
+% end
+
+% %Make vertices for 4 rotors
+nRotVerts = 10; %Number of verticies in rotor circle
+dang = 360 / nRotVerts; %arc angle between each vertex in circle
 for i=1:4
-    % for j=1:nRotVerts
 
+    xc = RotCent(1,i);  %x-center of rotor
+    yc = RotCent(2,i);  %y-center of rotor
 
-        xc = RotCent(1,i);  %x-center of rotor
-        yc = RotCent(2,i);  %y-center of rotor
+    RotVerts = zeros(3, nRotVerts); %Store rotor vertices for current rotor
 
-        RotVerts = [...
-            xc+Rr, yc, 0;...  %front
-            xc,    yc+Rr, 0;...  %right
-            xc-Rr, yc, 0;...  %back
-            xc,    yc-Rr, 0;...  %left
-            ]';
-    % end
+    %calculate each vertex in circle incrementally
+    for j=1:nRotVerts
+        RotVerts(1,j) = xc + Rr * cosd(dang * (j -1)); %x disp. from center
+        RotVerts(2,j) = yc + Rr * sind(dang * (j -1)); %y disp. from center
+    end
 
     %append to vertices
-    V = horzcat(V,RotVerts)
+    V = horzcat(V,RotVerts);
 end
-
-
-
-% xc = RotCent(1,1);  %x-center of rotor
-% yc = RotCent(2,1);  %y-center of rotor
-
-% RotVerts = [...
-%         xc+Rr, yc, 0;...  %front
-%         xc,    yc+Rr, 0;...  %right
-%         xc-Rr, yc, 0;...  %back
-%         xc,    yc-Rr, 0;...  %left
-%         ]';
-% %append to vertices
-% V = horzcat(V,RotVerts);
-
-
-
-
 
 % define faces as a list of vertices numbered above
 F = ones(8, nRotVerts)
 
-disp(F)
-
+%Make 4 faces for 4 arms (need to be same number of vers as rotors)
 for i=1:4
     F(i,2:nRotVerts) = F(i,2:nRotVerts) * i+1
 end
 
-nvert = 6;
-
+%Make 4 faces for 4 rotors (circles made of nRotVert vertices)
+nvert = 6; %start at this vertex and increase by one
 for i=1:4
     for j=1:nRotVerts
         F(i+4,j) = nvert;
@@ -211,28 +211,6 @@ for i=1:4
 end
 
 disp(F)
-
-  % F = [...
-  %       1, 2, 2, 2;...  % front arm (rod)
-  %       1, 3, 3, 3;...  % rear arm (rod)
-  %       1, 4, 4, 4;...  % right arm (rod)
-  %       1, 5, 5, 5;...  % left arm (rod)
-  %       6, 7, 8, 9;...
-  %       % 6, 8, 7, 9;...  % left arm (rod)
-  %       % 2, 8;...  % left arm (rod)
-  %       ];
-
-
-
-  % F = [...
-  %       1, 2;...  % front arm (rod)
-  %       1, 3;...  % rear arm (rod)
-  %       1, 4;...  % right arm (rod)
-  %       ];
-  % F = [...
-  %       F;...
-  %       1, 5;...  % left arm (rod)
-  %       ];
 
 % define colors for each face
   myred = [1, 0, 0];

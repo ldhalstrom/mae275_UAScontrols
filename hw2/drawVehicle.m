@@ -119,21 +119,55 @@ end
 %=======================================================================
 function [V,F,facecolors] = defineVehicleBody
 
+% % Define the vertices (physical location of vertices
+% V = [...
+%     1, 0, 0;...   % pt 1 (nose)
+%     -1, -2, 0;... % pt 2 (wingtip)
+%     0, 0, 0;...   % pt 3 (rear)
+%     -1, 2, 0;...  % pt 4 (wingtip)
+%     0, 0, -1;...  % pt 5 (tailtip)
+%     ]';
+
 % Define the vertices (physical location of vertices
+La = 1;         % length of rotor support arm
+Rr = 0.25;          % rotor radius
 V = [...
-    1, 0, 0;...   % pt 1 (nose)
-    -1, -2, 0;... % pt 2 (wingtip)
-    0, 0, 0;...   % pt 3 (rear)
-    -1, 2, 0;...  % pt 4 (wingtip)
-    0, 0, -1;...  % pt 5 (tailtip)
+     0,  0, 0;...  % pt 1 (center)
+     La,  0, 0;...  % pt 2 (front)
+    -La,  0, 0;...  % pt 3 (back)
+     0,  La, 0;...  % pt 4 (right)
+     0, -La, 0;...  % pt 5 (left)
+     La+Rr, 0, 0;...  %
+     La-Rr, 0, 0;...  %
+     La, La+Rr, 0;...  %
+     La, La-Rr, 0;...  %
     ]';
+
+% % define faces as a list of vertices numbered above
+%   F = [...
+%         1, 2, 3;...  % left wing (triangle)
+%         1, 3, 4;...  % right wing (triangle)
+%         1, 3, 5;...  % tail  (triangle)
+%         ];
 
 % define faces as a list of vertices numbered above
   F = [...
-        1, 2, 3;...  % left wing (triangle)
-        1, 3, 4;...  % right wing (triangle)
-        1, 3, 5;...  % tail  (triangle)
+        1, 2;...  % front arm (rod)
+        1, 3;...  % rear arm (rod)
+        1, 4;...  % right arm (rod)
+        1, 5;...  % left arm (rod)
+        % 6, 8, 7, 9;...  % left arm (rod)
+        % 2, 8;...  % left arm (rod)
         ];
+  % F = [...
+  %       1, 2;...  % front arm (rod)
+  %       1, 3;...  % rear arm (rod)
+  %       1, 4;...  % right arm (rod)
+  %       ];
+  % F = [...
+  %       F;...
+  %       1, 5;...  % left arm (rod)
+  %       ];
 
 % define colors for each face
   myred = [1, 0, 0];
@@ -143,9 +177,11 @@ V = [...
   mycyan = [0, 1, 1];
 
   facecolors = [...
-    mygreen;...    % left wing
-    mygreen;...    % right wing
-    myblue;...     % tail
+    mygreen;...    % front arm
+    myred;...      % rear arm
+    myblue;...     % right arm
+    mycyan;...     % left arm
+    % myyellow;...     %
     ];
 end
 

@@ -121,11 +121,11 @@ function [V,F,facecolors] = defineVehicleBody
 
 % Define the vertices (physical location of vertices
 V = [...
-    1, 0, 0;...   % pt 1
-    -1, -2, 0;... % pt 2
-    0, 0, 0;...   % pt 3
-    -1, 2, 0;...  % pt 4
-    0, 0, -1;...  % pt 5
+    1, 0, 0;...   % pt 1 (nose)
+    -1, -2, 0;... % pt 2 (wingtip)
+    0, 0, 0;...   % pt 3 (rear)
+    -1, 2, 0;...  % pt 4 (wingtip)
+    0, 0, -1;...  % pt 5 (tailtip)
     ]';
 
 % define faces as a list of vertices numbered above
